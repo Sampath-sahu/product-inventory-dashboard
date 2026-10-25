@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Product Inventory &amp; Analytics Dashboard</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <header>
+    <h1>Product Inventory &amp; Analytics Dashboard</h1>
+  </header>
+
+  <main>
+    <section aria-labelledby="add-heading">
+      <h2 id="add-heading">Add product</h2>
+      <form id="product-form" novalidate>
+        <div class="field">
+          <label for="product-name">Product name</label>
+          <input id="product-name" type="text" maxlength="50" autocomplete="off">
+        </div>
+        <div class="field">
+          <label for="product-price">Price (USD)</label>
+          <input id="product-price" type="text" inputmode="decimal" autocomplete="off">
+        </div>
+        <button type="submit">Add product</button>
+      </form>
+      <p id="message" role="status"></p>
+    </section>
+
+    <section aria-labelledby="stats-heading">
+      <h2 id="stats-heading">Analytics</h2>
+      <dl class="stats">
+        <div><dt>Total products</dt><dd id="stat-count"></dd></div>
+        <div><dt>Inventory value</dt><dd id="stat-total"></dd></div>
+        <div><dt>Average price</dt><dd id="stat-average"></dd></div>
+        <div><dt>Discount (5%)</dt><dd id="stat-discount"></dd></div>
+        <div><dt>Tax (10%, after discount)</dt><dd id="stat-tax"></dd></div>
+        <div><dt>Final total</dt><dd id="stat-final"></dd></div>
+      </dl>
+    </section>
+
+    <section aria-labelledby="inventory-heading">
+      <h2 id="inventory-heading">Inventory</h2>
+      <div class="field">
+        <label for="search">Search by product name</label>
+        <input id="search" type="search" autocomplete="off">
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th scope="col">Name</th><th scope="col">Price</th><th scope="col">Category</th><th scope="col">Action</th></tr>
+          </thead>
+          <tbody id="inventory-body"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <section aria-labelledby="affordable-heading">
+      <h2 id="affordable-heading">Affordable products (under $200)</h2>
+      <ul id="affordable-list"></ul>
+    </section>
+
+    <section aria-labelledby="report-heading">
+      <h2 id="report-heading">Report</h2>
+      <ul id="report-list"></ul>
+    </section>
+  </main>
+</body>
+</html>

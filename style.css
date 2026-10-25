@@ -1,0 +1,375 @@
+/* Interactive Product Inventory Dashboard - modern, lightweight theme */
+* {
+    box-sizing: border-box;
+}
+
+:root {
+    --navy: #172554;
+    --blue: #2563eb;
+    --indigo: #4f46e5;
+    --text: #1e293b;
+    --muted: #64748b;
+    --border: #dbe5f2;
+    --surface: rgba(255, 255, 255, 0.94);
+}
+
+body {
+    margin: 0;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+    color: var(--text);
+    line-height: 1.5;
+    background:
+        radial-gradient(circle at 8% 8%, rgba(96, 165, 250, 0.22), transparent 28rem),
+        radial-gradient(circle at 92% 18%, rgba(129, 140, 248, 0.20), transparent 26rem),
+        linear-gradient(135deg, #eef5ff 0%, #f7f8ff 48%, #edf2ff 100%);
+    background-attachment: fixed;
+}
+
+header {
+    position: relative;
+    overflow: hidden;
+    padding: 2rem 1rem;
+    text-align: center;
+    color: white;
+    background: linear-gradient(120deg, #172554, #1d4ed8 58%, #4f46e5);
+    box-shadow: 0 8px 24px rgba(30, 64, 175, 0.18);
+}
+
+header::before,
+header::after {
+    content: "";
+    position: absolute;
+    border-radius: 50%;
+    pointer-events: none;
+    background: rgba(255, 255, 255, 0.08);
+}
+
+header::before {
+    width: 220px;
+    height: 220px;
+    top: -125px;
+    left: 8%;
+}
+
+header::after {
+    width: 280px;
+    height: 280px;
+    right: 5%;
+    bottom: -210px;
+}
+
+header h1,
+header p {
+    position: relative;
+    z-index: 1;
+}
+
+h1 {
+    margin: 0;
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    letter-spacing: -0.025em;
+}
+
+header p {
+    margin: 0.4rem 0 0;
+    color: #dbeafe;
+}
+
+h2 {
+    margin-top: 0;
+    font-size: 1.15rem;
+    color: var(--navy);
+}
+
+main {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 1.25rem;
+}
+
+section {
+    background: var(--surface);
+    border: 1px solid rgba(203, 213, 225, 0.85);
+    border-radius: 14px;
+    padding: 1.15rem;
+    margin-bottom: 1.1rem;
+    box-shadow: 0 4px 14px rgba(30, 58, 138, 0.045);
+    backdrop-filter: blur(8px);
+    transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+section:hover {
+    border-color: #bfcef9;
+    box-shadow: 0 9px 24px rgba(30, 58, 138, 0.09);
+}
+
+.field {
+    margin-bottom: 0.75rem;
+}
+
+label {
+    display: block;
+    margin-bottom: 0.3rem;
+    font-weight: 650;
+    color: #334155;
+}
+
+input,
+select {
+    width: 100%;
+    max-width: 380px;
+    padding: 0.7rem 0.8rem;
+    color: var(--text);
+    background: #fff;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    font: inherit;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+}
+
+input:hover,
+select:hover {
+    border-color: #93b4f8;
+}
+
+input:focus,
+select:focus {
+    outline: none;
+    border-color: var(--blue);
+    box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.12);
+}
+
+button {
+    padding: 0.65rem 1rem;
+    border: 0;
+    border-radius: 8px;
+    color: white;
+    background: linear-gradient(110deg, var(--blue), var(--indigo));
+    font: inherit;
+    font-weight: 650;
+    cursor: pointer;
+    box-shadow: 0 3px 8px rgba(37, 99, 235, 0.16);
+    transition: transform 0.18s ease, box-shadow 0.18s ease, filter 0.18s ease;
+}
+
+button:hover {
+    filter: brightness(1.06);
+    transform: translateY(-2px);
+    box-shadow: 0 7px 14px rgba(37, 99, 235, 0.22);
+}
+
+button:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 5px rgba(37, 99, 235, 0.15);
+}
+
+button.delete {
+    padding: 0.35rem 0.7rem;
+    background: #dc2626;
+    box-shadow: none;
+}
+
+button.delete:hover {
+    background: #b91c1c;
+    box-shadow: 0 4px 10px rgba(220, 38, 38, 0.18);
+}
+
+:focus-visible {
+    outline: 3px solid #fbbf24;
+    outline-offset: 3px;
+}
+
+#message {
+    min-height: 1.5rem;
+    margin: 0.75rem 0 0;
+    font-weight: 600;
+}
+
+#message.error {
+    color: #b91c1c;
+}
+
+#message.success {
+    color: #15803d;
+}
+
+/* Analytics cards */
+.stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(155px, 1fr));
+    gap: 0.85rem;
+    margin: 0;
+}
+
+.stats div {
+    position: relative;
+    overflow: hidden;
+    padding: 1rem;
+    background: linear-gradient(145deg, #ffffff, #f4f7ff);
+    border: 1px solid #e0e8f8;
+    border-radius: 12px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.stats div::after {
+    content: "";
+    position: absolute;
+    width: 58px;
+    height: 58px;
+    right: -22px;
+    top: -22px;
+    border-radius: 50%;
+    background: rgba(99, 102, 241, 0.08);
+    transition: transform 0.25s ease;
+}
+
+.stats div:hover {
+    transform: translateY(-4px);
+    border-color: #b9cdfa;
+    box-shadow: 0 9px 20px rgba(37, 99, 235, 0.11);
+}
+
+.stats div:hover::after {
+    transform: scale(1.5);
+}
+
+.stats dt {
+    position: relative;
+    z-index: 1;
+    font-size: 0.85rem;
+    color: var(--muted);
+}
+
+.stats dd {
+    position: relative;
+    z-index: 1;
+    margin: 0.2rem 0 0;
+    font-size: 1.3rem;
+    font-weight: 750;
+    color: var(--navy);
+}
+
+/* Table and row interactions */
+.table-wrap {
+    overflow-x: auto;
+    border-radius: 9px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #fff;
+}
+
+th,
+td {
+    text-align: left;
+    padding: 0.7rem 0.6rem;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+th {
+    color: #334155;
+    background: #eef4ff;
+    font-size: 0.9rem;
+}
+
+tbody tr {
+    transition: background-color 0.18s ease;
+}
+
+tbody tr:hover {
+    background: #f0f6ff;
+}
+
+td.empty {
+    text-align: center;
+    color: var(--muted);
+}
+
+ul {
+    margin: 0;
+    padding-left: 1.25rem;
+}
+
+li {
+    padding: 0.2rem 0;
+    transition: color 0.18s ease, transform 0.18s ease;
+}
+
+li:hover {
+    color: var(--blue);
+    transform: translateX(3px);
+}
+
+pre {
+    padding: 0.9rem;
+    overflow-wrap: anywhere;
+    white-space: pre-wrap;
+    color: #dbeafe;
+    background: #172554;
+    border-radius: 9px;
+}
+
+/* Optional product thumbnails: use <img class="product-image" ...> in the table */
+.product-image {
+    width: 48px;
+    height: 48px;
+    object-fit: cover;
+    display: block;
+    border-radius: 9px;
+    border: 1px solid #dbe5f2;
+    background: #f8fafc;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.product-image:hover {
+    transform: scale(1.08);
+    box-shadow: 0 4px 10px rgba(30, 58, 138, 0.15);
+}
+
+.product-cell {
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+}
+
+/* Keep motion subtle and respect accessibility preferences */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        transition-duration: 0.01ms !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+    }
+}
+
+@media (max-width: 600px) {
+    main {
+        padding: 0.75rem;
+    }
+
+    section {
+        padding: 0.9rem;
+    }
+
+    form {
+        display: flex;
+        flex-direction: column;
+        gap: 0.55rem;
+    }
+
+    input,
+    select,
+    form button {
+        width: 100%;
+        max-width: none;
+    }
+
+    th,
+    td {
+        padding: 0.5rem;
+        font-size: 0.85rem;
+    }
+}
